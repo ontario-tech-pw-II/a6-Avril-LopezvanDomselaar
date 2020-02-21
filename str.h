@@ -15,17 +15,13 @@ class str
     int _n;      // size of the buffer
 
   public:
-  
+
     // constructors of various forms
-    
-    str();      
+    str();
     str(char ch);
     str(const char* c_str);
 
-    // TODO 1. Implement copy constructor 
-    str(const str &);
-
-    // lets not forget the destructor
+    str(const str &);   // copy constructor
     ~str();
 
     // function for finding length of the string
@@ -36,16 +32,19 @@ class str
 
     void print();
 
-    // TODO 2. Implement the following member functions:
-  
     // clear erases the contents of the string, which becomes an empty string (with a length of 0 characters).
     void clear();
 
     // append extends the string by appending additional characters at the end of its current value:
     void append(const str& str);
 
+    const str& operator=(const str& s);
 
-  // TODO 3. Implement the following swap functions that exchanges the values of two strings
+    friend str operator+(const str& a, const str& b);
+
+    friend ostream& operator<<(ostream& os, const str& s);
+    friend istream& operator>>(istream& is, str& s);
+
   friend void swap(str &, str &);
 };
 
